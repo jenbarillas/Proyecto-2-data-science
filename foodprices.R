@@ -3,7 +3,7 @@ library(caret)
 
 #carga de datos
 library(readxl)
-datos <- read.csv("C:/Users/JennyMBB/Desktop/Data Science/Proyecto-2/FoodPrices.csv")
+datos <- read.csv("C:/Users/JennyMBB/Desktop/Data Science/Proyecto-2/FoodPrices-.csv")
 copia <- datos
 
 #---------Limpieza conversion de moneda--------
@@ -307,7 +307,42 @@ datos$cur_name <- NULL
 #---------Eliminacion de filas con precio 0 -----------
 
 datos <- datos[-which(datos$mp_price == 0),]
+datos <- datos[-which(is.na(datos$cm_id)),]
 
+#-------- toda la masa de la comida convertida en lb o L todo-------
+
+br <- datos[which(datos$cm_name == "Beans (red"),]
+
+#Separacion de datos entre la comida y la comida dentro de la canasta basica#
+
+datos <- datos[-which(datos$cm_name == "Livestock (Goat)"),]
+datos <- datos[-which(datos$cm_name == "Livestock (Sheep)"),]
+datos <- datos[-which(datos$cm_name == "Livestock (pig)"),]
+datos <- datos[-which(datos$cm_name == "Livestock (sheep"),]
+datos <- datos[-which(datos$cm_name == "Livestock (hen)"),]
+datos <- datos[-which(datos$cm_name == "Livestock (goat"),]
+datos <- datos[-which(datos$cm_name == "Livestock (cattle)"),]
+datos <- datos[-which(datos$cm_name == "Electricity"),]
+
+#unir elementos parecidos
+p <- datos[which(datos$cm_name == "Apples (red)"),]
+p$cm_name <- "Apples"
+datos <- datos[-which(datos$cm_name == "Apples (red)"),]
+datos <- rbind(datos,p)
+
+p <- datos[which(datos$cm_name == "Bananas (medium size)"),]
+p$cm_name <- "Bananas"
+datos <- datos[-which(datos$cm_name == "Bananas (medium size)"),]
+datos <- rbind(datos,p)
+
+#---nivelar cantidades----
+
+price <- datos[-which(datos$mp_price > 20),]
+plot(price[,"mp_price"])
+boxplot(price[,"mp_price"])
+datos <- datos[-which(datos$mp_price > 5),]
+plot(price5[,"mp_price"])
+boxplot(price5[,"mp_price"])
 #--------VARIABLES NUMERICAS------
 
 #Estadisticas descriptivas de las variabes numericas
@@ -317,7 +352,7 @@ summary(datos$cm_id)
 summary(datos$mp_price)
 #pais
 summary(datos$adm0_id)
-#año
+#aÃ±o
 summary(datos$mp_year)
 
 
@@ -327,17 +362,21 @@ boxplot(datos[,"cm_id"])
 #precio
 mp <- datos[,"mp_price"]
 plot(mp)
+plot(datos[,"cm_id"])
 #plot(datos[,"mp_price"])
 #pais
 boxplot(datos[,"adm0_id"])
-#año
+#aÃ±o
 boxplot(datos[,"mp_year"])
 
 
 #separamos los datos numericos para la demostracion de variables independientes
+library(Hmisc)
 numdata <- datos[c(1,3,5,7,9,11,13,15)]
-cor(numdata)
+rcorr(numdata, type = "spearman")
 
+library(polycor)
+hetcor(numdata)
 #--------VARIABLES CATEGORICAS------
 
 #Tablas de frecuencias
