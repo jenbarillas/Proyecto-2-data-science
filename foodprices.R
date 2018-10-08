@@ -3,7 +3,7 @@ library(caret)
 
 #carga de datos
 library(readxl)
-datos <- read.csv("C:/Users/JennyMBB/Desktop/Data Science/Proyecto-2/FoodPrices-.csv")
+datos <- read.csv("../FoodPrices.csv")
 copia <- datos
 
 #---------Limpieza conversion de moneda--------
@@ -307,8 +307,9 @@ datos$cur_name <- NULL
 #---------Eliminacion de filas con precio 0 -----------
 
 datos <- datos[-which(datos$mp_price == 0),]
+copia<-datos
 datos <- datos[-which(is.na(datos$cm_id)),]
-
+datos<-copia
 #-------- toda la masa de la comida convertida en lb o L todo-------
 
 br <- datos[which(datos$cm_name == "Beans (red"),]
@@ -318,9 +319,9 @@ br <- datos[which(datos$cm_name == "Beans (red"),]
 datos <- datos[-which(datos$cm_name == "Livestock (Goat)"),]
 datos <- datos[-which(datos$cm_name == "Livestock (Sheep)"),]
 datos <- datos[-which(datos$cm_name == "Livestock (pig)"),]
-datos <- datos[-which(datos$cm_name == "Livestock (sheep"),]
-datos <- datos[-which(datos$cm_name == "Livestock (hen)"),]
-datos <- datos[-which(datos$cm_name == "Livestock (goat"),]
+#datos <- datos[-which(datos$cm_name == "Livestock (sheep"),]
+#datos <- datos[-which(datos$cm_name == "Livestock (hen)"),]
+#datos <- datos[-which(datos$cm_name == "Livestock (goat"),]
 datos <- datos[-which(datos$cm_name == "Livestock (cattle)"),]
 datos <- datos[-which(datos$cm_name == "Electricity"),]
 
@@ -329,7 +330,7 @@ p <- datos[which(datos$cm_name == "Apples (red)"),]
 p$cm_name <- "Apples"
 datos <- datos[-which(datos$cm_name == "Apples (red)"),]
 datos <- rbind(datos,p)
-
+copia<-datos
 p <- datos[which(datos$cm_name == "Bananas (medium size)"),]
 p$cm_name <- "Bananas"
 datos <- datos[-which(datos$cm_name == "Bananas (medium size)"),]
@@ -341,7 +342,7 @@ price <- datos[-which(datos$mp_price > 20),]
 plot(price[,"mp_price"])
 boxplot(price[,"mp_price"])
 datos <- datos[-which(datos$mp_price > 5),]
-plot(price5[,"mp_price"])
+plot(price[,"mp_price"])
 boxplot(price5[,"mp_price"])
 #--------VARIABLES NUMERICAS------
 
