@@ -311,19 +311,166 @@ copia<-datos
 datos <- datos[-which(is.na(datos$cm_id)),]
 datos<-copia
 #-------- toda la masa de la comida convertida en lb o L todo-------
+p <- datos[which(datos$um_name == "1.5 KG"),]
+p$mp_price <- (p$mp_price)*(1/1.5)
+p$um_name <- "KG"
+datos[which(datos$um_name == "1.5 KG"),] <- p
 
-br <- datos[which(datos$cm_name == "Beans (red"),]
+p <- datos[which(datos$um_name == "1.8 KG"),]
+p$mp_price <- (p$mp_price)*(1/1.8)
+p$um_name <- "KG"
+datos[which(datos$um_name == "1.8 KG"),] <- p
 
-#Separacion de datos entre la comida y la comida dentro de la canasta basica#
+p <- datos[which(datos$um_name == "1.8 L"),]
+p$mp_price <- (p$mp_price)*(1/1.8)
+p$um_name <- "L"
+datos[which(datos$um_name == "1.8 L"),] <- p
 
-datos <- datos[-which(datos$cm_name == "Livestock (Goat)"),]
-datos <- datos[-which(datos$cm_name == "Livestock (Sheep)"),]
-datos <- datos[-which(datos$cm_name == "Livestock (pig)"),]
-#datos <- datos[-which(datos$cm_name == "Livestock (sheep"),]
-#datos <- datos[-which(datos$cm_name == "Livestock (hen)"),]
-#datos <- datos[-which(datos$cm_name == "Livestock (goat"),]
-datos <- datos[-which(datos$cm_name == "Livestock (cattle)"),]
-datos <- datos[-which(datos$cm_name == "Electricity"),]
+p <- datos[which(datos$um_name == "10 KG"),]
+p$mp_price <- (p$mp_price)*(1/10)
+p$um_name <- "KG"
+datos[which(datos$um_name == "10 KG"),] <- p
+
+p <- datos[which(datos$um_name == "100 KG"),]
+p$mp_price <- (p$mp_price)*(1/100)
+p$um_name <- "KG"
+datos[which(datos$um_name == "100 KG"),] <- p
+
+p <- datos[which(datos$um_name == "11.5 KG"),]
+p$mp_price <- (p$mp_price)*(1/11.5)
+p$um_name <- "KG"
+datos[which(datos$um_name == "11.5 KG"),] <- p
+
+p <- datos[which(datos$um_name == "115 G"),]
+p$mp_price <- (p$mp_price)*(1/(115/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "115 G"),] <- p
+
+p <- datos[which(datos$um_name == "12.5 KG"),]
+p$mp_price <- (p$mp_price)*(1/12.5)
+p$um_name <- "KG"
+datos[which(datos$um_name == "12.5 KG"),] <- p
+
+p <- datos[which(datos$um_name == "125 G"),]
+p$mp_price <- (p$mp_price)*(1/(125/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "125 G"),] <- p
+
+p <- datos[which(datos$um_name == "150 G"),]
+p$mp_price <- (p$mp_price)*(1/(150/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "150 G"),] <- p
+
+p <- datos[which(datos$um_name == "160 G"),]
+p$mp_price <- (p$mp_price)*(1/(160/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "160 G"),] <- p
+
+p <- datos[which(datos$um_name == "168 G"),]
+p$mp_price <- (p$mp_price)*(1/(168/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "168 G"),] <- p
+
+p <- datos[which(datos$um_name == "185 G"),]
+p$mp_price <- (p$mp_price)*(1/(185/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "185 G"),] <- p
+
+p <- datos[which(datos$um_name == "2 KG"),]
+p$mp_price <- (p$mp_price)*(1/2)
+p$um_name <- "KG"
+datos[which(datos$um_name == "2 KG"),] <- p
+
+p <- datos[which(datos$um_name == "200 G"),]
+p$mp_price <- (p$mp_price)*(1/(200/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "200 G"),] <- p
+
+p <- datos[which(datos$um_name == "3 KG"),]
+p$mp_price <- (p$mp_price)*(1/3)
+p$um_name <- "KG"
+datos[which(datos$um_name == "3 KG"),] <- p
+
+p <- datos[which(datos$um_name == "3.5 KG"),]
+p$mp_price <- (p$mp_price)*(1/3.5)
+p$um_name <- "KG"
+datos[which(datos$um_name == "3.5 KG"),] <- p
+
+p <- datos[which(datos$um_name == "385 G"),]
+p$mp_price <- (p$mp_price)*(1/(385/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "385 G"),] <- p
+
+p <- datos[which(datos$um_name == "400 G"),]
+p$mp_price <- (p$mp_price)*(1/(400/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "400 G"),] <- p
+
+p <- datos[which(datos$um_name == "5 KG"),]
+p$mp_price <- (p$mp_price)*(1/5)
+p$um_name <- "KG"
+datos[which(datos$um_name == "5 KG"),] <- p
+
+p <- datos[which(datos$um_name == "5 L"),]
+p$mp_price <- (p$mp_price)*(1/5)
+p$um_name <- "L"
+datos[which(datos$um_name == "5 L"),] <- p
+
+p <- datos[which(datos$um_name == "50 KG"),]
+p$mp_price <- (p$mp_price)*(1/50)
+p$um_name <- "KG"
+datos[which(datos$um_name == "50 KG"),] <- p
+
+p <- datos[which(datos$um_name == "Libra"),]
+p$mp_price <- (p$mp_price)*(1/0.4535)
+p$um_name <- "KG"
+datos[which(datos$um_name == "Libra"),] <- p
+
+p <- datos[which(datos$um_name == "500 G"),]
+p$mp_price <- (p$mp_price)*(1/0.5)
+p$um_name <- "KG"
+datos[which(datos$um_name == "500 G"),] <- p
+
+p <- datos[which(datos$um_name == "91 KG"),]
+p$mp_price <- (p$mp_price)*(1/91)
+p$um_name <- "KG"
+datos[which(datos$um_name == "91 KG"),] <- p
+
+p <- datos[which(datos$um_name == "85 G"),]
+p$mp_price <- (p$mp_price)*(1/(85/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "85 G"),] <- p
+
+p <- datos[which(datos$um_name == "750 ML"),]
+p$mp_price <- (p$mp_price)*(1/(750/1000))
+p$um_name <- "L"
+datos[which(datos$um_name == "750 ML"),] <- p
+
+p <- datos[which(datos$um_name == "500 ML"),]
+p$mp_price <- (p$mp_price)*(1/(500/1000))
+p$um_name <- "L"
+datos[which(datos$um_name == "500 ML"),] <- p
+
+p <- datos[which(datos$um_name == "750 G"),]
+p$mp_price <- (p$mp_price)*(1/(750/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "750 G"),] <- p
+
+p <- datos[which(datos$um_name == "650 G"),]
+p$mp_price <- (p$mp_price)*(1/(650/1000))
+p$um_name <- "KG"
+datos[which(datos$um_name == "650 G"),] <- p
+
+p <- datos[which(datos$um_name == "Gallon"),]
+p$mp_price <- (p$mp_price)*(1/3.78)
+p$um_name <- "L"
+datos[which(datos$um_name == "Gallon"),] <- p
+
+p <- datos[which(datos$um_name == ("KG")),]
+p <- rbind(datos[which(datos$um_name == ("L")),],p)
+p <- rbind(datos[which(datos$um_name == ("Dozen")),],p)
+p <- rbind(datos[which(datos$um_name == ("Package")),],p)
+datos <- p
 
 #unir elementos parecidos
 p <- datos[which(datos$cm_name == "Apples (red)"),]

@@ -12,10 +12,22 @@ prediccion<-function(arreglo, month=FALSE){
   return(arreglo)
 }
 
-datos<-read.csv('./foodPricesClean.csv')
+datos<-read.csv("C:/Users/JennyMBB/Desktop/Data Science/clean/foodPricesClean.csv")
+
+#---------------------------------------------------------
+#            PREDICCIONES
+#---------------------------------------------------------
+
 # head(datos)
 prediccionesGuatemala<-data.frame()
 datosGuatemala<-subset(datos,adm0_name == 'Guatemala')
+
+library(Hmisc)
+#numdata <- datosGuatemala[c(1,3,5,7,9,11,13,15)]
+numdata <- datosGuatemala[c(4,8,10,12,14,15,16)]
+rcorr(numdata, type = "spearman")
+
+
 # head(datosGuatemala)
 bananas<-subset(datosGuatemala,cm_name == 'Bananas')
 bananas<-prediccion(bananas)
@@ -116,5 +128,4 @@ tortillas<-subset(datosGuatemala,cm_name == 'Tortilla (maize)')
 tortillas<-prediccion(tortillas)
 tortillas['cm_name'] = 'Tortillas'
 prediccionesGuatemala<-rbind(prediccionesGuatemala, setNames(tortillas, names(prediccionesGuatemala)))
-
-
+write.csv(datosGuatemala, file = "Guatemala")
